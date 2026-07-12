@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-twitter-blue: #1d9bf0;
+  --color-twitter-dark: #0f1419;
+  --color-twitter-gray: #536471;
+  --color-twitter-lightgray: #cfd9de;
+  --color-twitter-border: #eff3f4;
+  --color-twitter-hover: #f7f9f9;
+  --color-twitter-badge: #1d9bf01a;
+  --color-twitter-banner: #1d4ed8;
+  --font-family-inter: "Inter", system-ui, sans-serif;
+}
+
+.dark {
+  --color-twitter-dark: #e7e9ea;
+  --color-twitter-gray: #71767b;
+  --color-twitter-lightgray: #333639;
+  --color-twitter-border: #2f3336;
+  --color-twitter-hover: #0d0d0d;
+}
+
+@layer base {
+  body {
+    font-family: "Inter", system-ui, sans-serif;
+    background: #ffffff;
+    color: var(--color-twitter-dark);
+    overflow-x: hidden;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  *, *::before, *::after {
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+
+  .dark body {
+    background: #000000;
+  }
+
+  ::selection {
+    background: var(--color-twitter-blue);
+    color: white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-twitter-lightgray);
+    border-radius: 4px;
+  }
+}
