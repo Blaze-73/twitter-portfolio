@@ -199,7 +199,7 @@ export const profile: ProfileData = {
       likes: 47,
       replies: 9,
       retweets: 18,
-      image: "https://picsum.photos/seed/ahayzone/600/400",
+      image: "/art.png",
     },
     {
       id: "p7",
@@ -216,7 +216,7 @@ export const profile: ProfileData = {
       likes: 22,
       replies: 4,
       retweets: 9,
-      image: "https://picsum.photos/seed/pharmacy/600/400",
+      image: "/para.png",
     },
     {
       id: "p9",
@@ -241,7 +241,7 @@ export const profile: ProfileData = {
       likes: 73,
       replies: 12,
       retweets: 25,
-      image: "https://picsum.photos/seed/portfolio/600/400",
+      image: "/portfolio.png",
     },
     {
       id: "p12",
