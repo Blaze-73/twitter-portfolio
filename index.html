@@ -11,7 +11,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div id="app-loading" class="app-loading">
+        <div class="app-loading-bird">
+          <svg viewBox="0 0 24 24" fill="#1d9bf0" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </div>
+      </div>
+      <style>
+        .app-loading {
+          position: fixed; inset: 0;
+          display: flex; align-items: center; justify-content: center;
+          background: #ffffff;
+          z-index: 9999;
+          transition: opacity 0.3s;
+        }
+        .app-loading-bird {
+          width: 48px; height: 48px;
+          animation: app-loading-bounce 1.2s ease-in-out infinite;
+        }
+        .app-loading-bird svg {
+          width: 100%; height: 100%;
+          display: block;
+        }
+        @keyframes app-loading-bounce {
+          0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+          50% { transform: translateY(-12px) scale(1.1); opacity: 1; }
+        }
+        @media (prefers-color-scheme: dark) {
+          .app-loading { background: #000000; }
+        }
+      </style>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
