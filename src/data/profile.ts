@@ -253,12 +253,12 @@ export const profile: ProfileData = {
     },
     {
       id: "p13",
-      content: "Real Estate Platform — implemented advanced search with filters, map integration, and saved searches. The UX flow from browsing to inquiry is buttery smooth.",
+      content: "Centre Hassan II — international center for meetings platform 🏛️ Built with React + react-motion for silky animations, Laravel Sanctum for secure auth, and SQL for data. Learned a ton about hosting the backend through this project too.",
       timestamp: "3w",
       likes: 33,
       replies: 7,
       retweets: 14,
-      image: "https://picsum.photos/seed/estate/600/400",
+      image: "/ch2.png",
     },
     {
       id: "p14",
