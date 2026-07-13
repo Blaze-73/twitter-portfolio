@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
+import { safeGetItem, safeSetItem } from "../utils/safeStorage"
 
 export function useTheme() {
   const [dark, setDark] = useState(() => {
-    const stored = localStorage.getItem("tw_theme")
-    return stored === "dark"
+    return safeGetItem("tw_theme") === "dark"
   })
 
   useEffect(() => {
@@ -13,7 +13,7 @@ export function useTheme() {
     } else {
       root.classList.remove("dark")
     }
-    localStorage.setItem("tw_theme", dark ? "dark" : "light")
+    safeSetItem("tw_theme", dark ? "dark" : "light")
   }, [dark])
 
   const toggle = () => setDark((p) => !p)

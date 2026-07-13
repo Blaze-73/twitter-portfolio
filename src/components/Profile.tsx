@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import type { ProfileData } from "../data/profile"
+import { safeGetItem, safeParseInt } from "../utils/safeStorage"
 
 interface ProfileProps {
   data: ProfileData
@@ -8,15 +9,17 @@ interface ProfileProps {
 
 export function Profile({ data }: ProfileProps) {
   const [dialog, setDialog] = useState<"idle" | "ask" | "yes" | "no">("idle")
+  const followersFallback = useRef(data.followers)
+  followersFallback.current = data.followers
+
   const [followers, setFollowers] = useState(() => {
-    const stored = localStorage.getItem("tw_followers")
-    return stored ? Number.parseInt(stored, 10) : data.followers
+    return safeParseInt(safeGetItem("tw_followers"), followersFallback.current)
   })
 
   useEffect(() => {
     const sync = () => {
-      const stored = localStorage.getItem("tw_followers")
-      if (stored) setFollowers(Number.parseInt(stored, 10))
+      const stored = safeGetItem("tw_followers")
+      if (stored !== null) setFollowers(safeParseInt(stored, followersFallback.current))
     }
     window.addEventListener("storage", sync)
     const interval = setInterval(sync, 500)

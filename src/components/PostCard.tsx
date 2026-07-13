@@ -94,7 +94,20 @@ export function PostCard({ post, index = 0 }: PostCardProps) {
             />
             <ActionIcon
               icon="share"
-              onClick={() => navigator.clipboard.writeText(window.location.href)}
+              onClick={() => {
+                try {
+                  navigator.clipboard.writeText(window.location.href)
+                } catch {
+                  const ta = document.createElement("textarea")
+                  ta.value = window.location.href
+                  ta.style.position = "fixed"
+                  ta.style.opacity = "0"
+                  document.body.appendChild(ta)
+                  ta.select()
+                  document.execCommand("copy")
+                  document.body.removeChild(ta)
+                }
+              }}
               activeColor="text-twitter-blue"
             />
           </div>

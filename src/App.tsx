@@ -3,6 +3,7 @@ import { Background } from "./components/Background"
 import { Profile } from "./components/Profile"
 import { Tabs } from "./components/Tabs"
 import { Layout } from "./components/Layout"
+import { OfflineBanner } from "./components/OfflineBanner"
 import { profile } from "./data/profile"
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
   return (
     <>
       <Background />
+      <OfflineBanner />
       <Layout data={profile} activeTab={activeTab} onTabChange={handleTabChange}>
         <div ref={contentRef} />
         <Profile data={profile} />

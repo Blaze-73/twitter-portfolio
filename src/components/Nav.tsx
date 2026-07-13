@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useTheme } from "../hooks/useTheme"
+import { safeGetItem, safeSetItem, safeParseInt } from "../utils/safeStorage"
 
 interface NavProps {
   activeTab: string
@@ -10,17 +11,16 @@ interface NavProps {
 export function Nav({ activeTab, onTabChange }: NavProps) {
   const { dark, toggle: toggleTheme } = useTheme()
   const [followed, setFollowed] = useState(() => {
-    return localStorage.getItem("tw_followed") === "true"
+    return safeGetItem("tw_followed") === "true"
   })
   const [followers, setFollowers] = useState(() => {
-    const stored = localStorage.getItem("tw_followers")
-    return stored ? Number.parseInt(stored, 10) : 128
+    return safeParseInt(safeGetItem("tw_followers"), 128)
   })
   const [animating, setAnimating] = useState(false)
 
   useEffect(() => {
-    localStorage.setItem("tw_followed", String(followed))
-    localStorage.setItem("tw_followers", String(followers))
+    safeSetItem("tw_followed", String(followed))
+    safeSetItem("tw_followers", String(followers))
   }, [followed, followers])
 
   const handleFollow = () => {
